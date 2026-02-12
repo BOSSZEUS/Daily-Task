@@ -10,6 +10,7 @@ import ListSelector from "./ListSelector";
 import AddCategoryForm from "./AddCategoryForm";
 import ExportButton from "./ExportButton";
 import ShareModal from "./ShareModal";
+import InstallButton from "./InstallButton";
 import Logo from "./Logo";
 
 interface DashboardProps {
@@ -223,6 +224,7 @@ export default function Dashboard({
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <InstallButton />
             <ExportButton categories={categories} entries={entries} />
             <button
               onClick={() => setShowShareModal(true)}
