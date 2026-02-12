@@ -1,6 +1,6 @@
 [project]
 id = ""
-name = "brag-doc-tracker"
+name = "task-tracker"
 
 [api]
 enabled = true

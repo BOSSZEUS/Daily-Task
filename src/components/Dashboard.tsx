@@ -6,6 +6,7 @@ import type { User } from "@supabase/supabase-js";
 import type { Profile, Category, Entry } from "@/lib/types/database";
 import CategorySection from "./CategorySection";
 import ExportButton from "./ExportButton";
+import ShareModal from "./ShareModal";
 
 interface DashboardProps {
   user: User;
@@ -22,6 +23,7 @@ export default function Dashboard({
 }: DashboardProps) {
   const [categories] = useState<Category[]>(initialCategories);
   const [entries, setEntries] = useState<Entry[]>(initialEntries);
+  const [showShareModal, setShowShareModal] = useState(false);
   const supabase = createClient();
 
   async function handleAddEntry(categoryId: string, content: string) {
@@ -64,11 +66,17 @@ export default function Dashboard({
       <header className="border-b border-zinc-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
           <div>
-            <h1 className="text-xl font-bold text-zinc-900">Brag Doc</h1>
+            <h1 className="text-xl font-bold text-zinc-900">Task Tracker</h1>
             <p className="text-sm text-zinc-500">Hey, {displayName}</p>
           </div>
           <div className="flex items-center gap-3">
             <ExportButton categories={categories} entries={entries} />
+            <button
+              onClick={() => setShowShareModal(true)}
+              className="rounded-lg border border-zinc-200 px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50"
+            >
+              Share
+            </button>
             <a
               href="/settings"
               className="rounded-lg border border-zinc-200 px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50"
@@ -105,6 +113,14 @@ export default function Dashboard({
           </div>
         )}
       </main>
+
+      {showShareModal && (
+        <ShareModal
+          categories={categories}
+          entries={entries}
+          onClose={() => setShowShareModal(false)}
+        />
+      )}
     </div>
   );
 }

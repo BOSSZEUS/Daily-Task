@@ -9,7 +9,7 @@ interface ExportButtonProps {
 }
 
 function generateMarkdown(categories: Category[], entries: Entry[]): string {
-  const lines: string[] = ["# Brag Doc", ""];
+  const lines: string[] = ["# Task Tracker", ""];
 
   for (const cat of categories) {
     const catEntries = entries
@@ -47,7 +47,7 @@ export default function ExportButton({ categories, entries }: ExportButtonProps)
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `brag-doc-${new Date().toISOString().split("T")[0]}.md`;
+    a.download = `task-tracker-${new Date().toISOString().split("T")[0]}.md`;
     a.click();
     URL.revokeObjectURL(url);
   }

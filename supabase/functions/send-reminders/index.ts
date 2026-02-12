@@ -8,7 +8,7 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const APP_URL = Deno.env.get("APP_URL") || "http://localhost:3000";
-const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "Brag Doc <reminders@yourdomain.com>";
+const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "Task Tracker <reminders@yourdomain.com>";
 
 Deno.serve(async () => {
   try {
@@ -87,7 +87,7 @@ Deno.serve(async () => {
                 Log an accomplishment
               </a>
               <p style="color: #a1a1aa; font-size: 13px; margin-top: 24px;">
-                You're receiving this because you set up reminders in Brag Doc.
+                You're receiving this because you set up reminders in Task Tracker.
               </p>
             </div>
           `,
