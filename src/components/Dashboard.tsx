@@ -10,6 +10,7 @@ import ListSelector from "./ListSelector";
 import AddCategoryForm from "./AddCategoryForm";
 import ExportButton from "./ExportButton";
 import ShareModal from "./ShareModal";
+import Logo from "./Logo";
 
 interface DashboardProps {
   user: User;
@@ -214,9 +215,12 @@ export default function Dashboard({
       {/* Header */}
       <header className="border-b border-zinc-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
-          <div>
-            <h1 className="text-xl font-bold text-zinc-900">Task Tracker</h1>
-            <p className="text-sm text-zinc-500">Hey, {displayName}</p>
+          <div className="flex items-center gap-3">
+            <Logo size={36} />
+            <div>
+              <h1 className="text-xl font-bold text-zinc-900">Task Tracker</h1>
+              <p className="text-sm text-zinc-500">Hey, {displayName}</p>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <ExportButton categories={categories} entries={entries} />

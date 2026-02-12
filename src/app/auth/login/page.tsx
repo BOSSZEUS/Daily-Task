@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import Logo from "@/components/Logo";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -33,7 +34,8 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4">
       <div className="w-full max-w-sm space-y-8">
-        <div className="text-center">
+        <div className="flex flex-col items-center text-center">
+          <Logo size={64} className="mb-4" />
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
             Task Tracker
           </h1>
