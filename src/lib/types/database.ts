@@ -27,7 +27,7 @@ export interface Database {
         };
         Relationships: [];
       };
-      categories: {
+      lists: {
         Row: {
           id: string;
           user_id: string;
@@ -51,10 +51,52 @@ export interface Database {
         };
         Relationships: [
           {
+            foreignKeyName: "lists_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      categories: {
+        Row: {
+          id: string;
+          user_id: string;
+          list_id: string;
+          name: string;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          list_id: string;
+          name: string;
+          sort_order?: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          list_id?: string;
+          name?: string;
+          sort_order?: number;
+          created_at?: string;
+        };
+        Relationships: [
+          {
             foreignKeyName: "categories_user_id_fkey";
             columns: ["user_id"];
             isOneToOne: false;
             referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "categories_list_id_fkey";
+            columns: ["list_id"];
+            isOneToOne: false;
+            referencedRelation: "lists";
             referencedColumns: ["id"];
           },
         ];
@@ -155,6 +197,7 @@ export interface Database {
 
 // Convenience types
 export type Profile = Database["public"]["Tables"]["profiles"]["Row"];
+export type List = Database["public"]["Tables"]["lists"]["Row"];
 export type Category = Database["public"]["Tables"]["categories"]["Row"];
 export type Entry = Database["public"]["Tables"]["entries"]["Row"];
 export type ReminderSchedule = Database["public"]["Tables"]["reminder_schedules"]["Row"];

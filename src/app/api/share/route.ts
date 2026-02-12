@@ -47,8 +47,9 @@ export async function POST(request: Request) {
 
   if (!res.ok) {
     const err = await res.text();
+    console.error("Resend API error:", err);
     return NextResponse.json(
-      { error: "Failed to send email", details: err },
+      { error: `Resend error: ${err}` },
       { status: 500 }
     );
   }
