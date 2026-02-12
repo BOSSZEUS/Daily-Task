@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const FROM_EMAIL =
-    process.env.FROM_EMAIL || "Task Tracker <onboarding@resend.dev>";
+    process.env.FROM_EMAIL || "Task Tracker <noreply@task-trackers.com>";
 
   if (!RESEND_API_KEY) {
     return NextResponse.json(
